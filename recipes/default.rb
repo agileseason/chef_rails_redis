@@ -7,11 +7,12 @@
 # All rights reserved - Do Not Redistribute
 #
 
+node.default['redisio']['version'] = node['chef_rails_redis']['version']
 node.default['redisio']['safe_install'] = false
 node.default['redisio']['servers'] = [
   {
     'name' => 'master',
-    'address' => '127.0.0.1',
+    'address' => node['chef_rails_redis']['listen_address'],
     'port' => '6379',
     'unixsocket' => '/tmp/redis.sock',
     'unixsocketperm' => '755'
